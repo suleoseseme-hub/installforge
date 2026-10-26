@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstallForge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: white;
+      padding: 24px;
+    }
+    main {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #151f32;
+      padding: 28px;
+      border-radius: 18px;
+    }
+    h1 { color: #69a7ff; }
+    input, button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+    input { border: 1px solid #52627a; }
+    button {
+      border: 0;
+      background: #3478f6;
+      color: white;
+      font-weight: bold;
+    }
+    #status { color: #c4d2e8; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>InstallForge</h1>
+    <p>Turn your website into an Android app.</p>
+    <label for="site">Website URL</label>
+    <input id="site" type="url" placeholder="https://example.com">
+    <label for="appname">App name</label>
+    <input id="appname" type="text" placeholder="My Android App">
+    <button onclick="prepareApp()">Prepare my app</button>
+    <p id="status">Enter your website details to begin.</p>
+  </main>
+  <script>
+    function prepareApp() {
+      const site = document.getElementById('site').value.trim();
+      const name = document.getElementById('appname').value.trim();
+      const status = document.getElementById('status');
+
+      if (!/^https?:\/\/.+\..+/.test(site)) {
+        status.textContent = 'Enter a valid website URL, including https://';
+        return;
+      }
+      if (!name) {
+        status.textContent = 'Enter an app name.';
+        return;
+      }
+      status.textContent =
+        'Details saved on this page for: ' + name +
+        '. APK building will be connected in the next stage.';
+    }
+  </script>
+</body>
+  </html>
